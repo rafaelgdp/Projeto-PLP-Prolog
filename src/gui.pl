@@ -5,10 +5,12 @@
 width(60).
 heigth(35).
 
-drawBorders() :- clear,
+drawBorders :-
+		 clear,
                  drawVertical,
                  drawHorizontal,
-                 drawPlayer.
+                 drawPlayer,
+		 drawPlatform(0, 35).
 
 drawVertical() :- width(Width),
                   drawVertical(0, 0),
@@ -36,3 +38,8 @@ drawPlayer :- width(Width), heigth(Heigth),
               cursor(W, H), write(" / \\"),
               H2 is H - 1, cursor(W, H2), write("/|_|\\"),
               H3 is H2 - 1, cursor(W, H3), write("(^~^)").
+
+drawPlatform(X, Y) :- Z is X + 2, T is Y - 1,
+        	cursor(Z, T), write(" ========"),
+                flush_output, sleep(0.3), M is X + 1, drawPlatform(M, Y).
+            
