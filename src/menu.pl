@@ -39,5 +39,5 @@ initOption(Option) :- ((Option == "1", game);
                        (Option == "2", showRecords);
                        (Option == "3", showCredits);
                        (Option == "4", clear(), halt(0));
-                       (initializeFailedMenu()))
+                       (initializeFailedMenu())) % Em caso de opção inválida
                           -> read(Something).
