@@ -1,4 +1,4 @@
-:- module('gui', [drawBorders/0]).
+:- module('gui', [drawBorders/0], [drawPlatform/0]).
 
 :- use_module(utils).
 
@@ -9,8 +9,7 @@ drawBorders :-
 		 clear,
                  drawVertical,
                  drawHorizontal,
-                 drawPlayer,
-		 drawPlatform(0, 35).
+                 drawPlayer.
 
 drawVertical() :- width(Width),
                   drawVertical(0, 0),
@@ -39,7 +38,7 @@ drawPlayer :- width(Width), heigth(Heigth),
               H2 is H - 1, cursor(W, H2), write("/|_|\\"),
               H3 is H2 - 1, cursor(W, H3), write("(^~^)").
 
-drawPlatform(X, Y) :- Z is X + 2, T is Y - 1,
-        	cursor(Z, T), write(" ========"),
-                flush_output, sleep(0.3), M is X + 1, drawPlatform(M, Y).
-            
+drawPlatform(X, Y) :-
+	Z is X + 2, T is Y - 1,
+  cursor(Z, T), write(" ========"),
+  flush_output, sleep(0.3), M is X + 1, drawPlatform(M, Y).

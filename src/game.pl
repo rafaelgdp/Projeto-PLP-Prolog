@@ -4,4 +4,5 @@
 :- use_module(utils).
 
 game :- wide_cursor(1),
-        drawBorders.
+        drawBorders,
+        drawPlatform.
